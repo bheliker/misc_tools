@@ -8,3 +8,5 @@ Snippets and Tools I use
 	- conversion formulas: quick helpers
 		- `km_miles()` converts km to miles, `miles_km()` does the opposite
 		- `rad_deg()` converts radians to degress and `deg_rad()` does the opposite
+		
+- `plotGPXfile()`: accepts a GPX file as input and returns a folium map. Intended for use in a Jupyter notebook for quickly checking GPX files.
