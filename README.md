@@ -10,3 +10,5 @@ Snippets and Tools I use
 		- `rad_deg()` converts radians to degress and `deg_rad()` does the opposite
 		
 - `plotGPXfile()`: accepts a GPX file as input and returns a folium map. Intended for use in a Jupyter notebook for quickly checking GPX files.
+
+- `kalmanFilter(data, R, Pi, Q)`: A simple [Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter)for use with basic 1-D, linear, time series sensors. Pass in an array, it returns a filtered array: `kalmanFilter(sensor1['temperatures'].values)`. 
