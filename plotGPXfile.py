@@ -27,6 +27,10 @@ def plotGPXfile(filepath):
                 points.extend(segment_points)
                 line = folium.PolyLine(segment_points, color=tableau20_hex[idx%20], weight=3, opacity=1,tooltip=track.name).add_to(m)
 
+		for waypoint in gpx.waypoints:
+			wpt = folium.CircleMarker(radius=5, location=[waypoint.latitude,waypoint.longitude], color='green', tooltip=waypoint.name,  fill=True,fill_color='green',fill_opacity=.5).add_to(m)
+			points.append(tuple([waypoint.latitude, waypoint.longitude]))
+
     m.fit_bounds([[min(p[0] for p in points), min(p[1] for p in points)], [max(p[0] for p in points), max(p[1] for p in points)]])
 
     return m
