@@ -12,3 +12,5 @@ Snippets and Tools I use
 - `plotGPXfile()`: accepts a GPX file as input and returns a folium map. Intended for use in a Jupyter notebook for quickly checking GPX files.
 
 - `kalmanFilter(data, R, Pi, Q)`: A simple [Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter)for use with basic 1-D, linear, time series sensors. Pass in an array, it returns a filtered array: `kalmanFilter(sensor1['temperatures'].values)`. 
+
+- `flexpointsensor.py`: This script reads a [Flexpoint bend sensor](https://www.flexpoint.com) and [plots it](https://flic.kr/p/2ja6WfJ). Can be used as the basis for any analog sensor on a Serial port.
