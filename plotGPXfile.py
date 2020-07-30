@@ -15,22 +15,41 @@ def plotGPXfile(filepath):
 
     m = folium.Map(location=[0,0], tiles=tiles, attr=attr, zoom_start=10)
 
-    with open(filepath,'r') as gpx_file:
+    with open(filepath, "r") as gpx_file:
         gpx = gpxpy.parse(gpx_file)
 
         points = []
         for idx, track in enumerate(gpx.tracks):
-            for segment in track.segments:        
+            for segment in track.segments:
                 segment_points = []
                 for point in segment.points:
                     segment_points.append(tuple([point.latitude, point.longitude]))
                 points.extend(segment_points)
-                line = folium.PolyLine(segment_points, color=tableau20_hex[idx%20], weight=3, opacity=1,tooltip=track.name).add_to(m)
+                line = folium.PolyLine(
+                    segment_points,
+                    color=tableau20_hex[idx % 20],
+                    weight=3,
+                    opacity=1,
+                    tooltip=track.name,
+                ).add_to(m)
 
-		for waypoint in gpx.waypoints:
-			wpt = folium.CircleMarker(radius=5, location=[waypoint.latitude,waypoint.longitude], color='green', tooltip=waypoint.name,  fill=True,fill_color='green',fill_opacity=.5).add_to(m)
-			points.append(tuple([waypoint.latitude, waypoint.longitude]))
+                for waypoint in gpx.waypoints:
+                    wpt = folium.CircleMarker(
+                        radius=5,
+                        location=[waypoint.latitude, waypoint.longitude],
+                        color="green",
+                        tooltip=waypoint.name,
+                        fill=True,
+                        fill_color="green",
+                        fill_opacity=0.5,
+                    ).add_to(m)
+                    points.append(tuple([waypoint.latitude, waypoint.longitude]))
 
-    m.fit_bounds([[min(p[0] for p in points), min(p[1] for p in points)], [max(p[0] for p in points), max(p[1] for p in points)]])
+    m.fit_bounds(
+        [
+            [min(p[0] for p in points), min(p[1] for p in points)],
+            [max(p[0] for p in points), max(p[1] for p in points)],
+        ]
+    )
 
     return m
